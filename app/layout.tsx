@@ -1,4 +1,5 @@
 import Navbar from "./component/Navbar";
+import Header from "./component/Carousel";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import "./globals.css";
@@ -21,6 +22,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html lang="en" className={poppins.className}>
       <body className="mx-24">
         <Navbar user={session?.user} />
+        <Header />
         {children}
       </body>
     </html>
