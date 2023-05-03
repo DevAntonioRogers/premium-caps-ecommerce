@@ -1,57 +1,48 @@
 "use client";
-
-import img from "app/Untitled-2.png";
-import Image from "next/image";
-
-import { useState, useEffect } from "react";
-
+import React, { useState } from "react";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
-const Carousel = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
+function App() {
+  const slides = [
+    {
+      url: "https://i.ibb.co/qDDtKdw/Slide1.jpg",
+    },
+    {
+      url: "https://i.ibb.co/z2m022Z/Adobe-Stock-246868093.jpg",
+    },
+  ];
+
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const prevSlide = () => {
-    setCurrentSlide(currentSlide === 0 ? 2 : (prev) => prev - 1);
+    const isFirstSlide = currentIndex === 0;
+    const newIndex = isFirstSlide ? slides.length - 1 : currentIndex - 1;
+    setCurrentIndex(newIndex);
   };
 
   const nextSlide = () => {
-    setCurrentSlide(currentSlide === 2 ? 0 : (prev) => prev + 1);
+    const isLastSlide = currentIndex === slides.length - 1;
+    const newIndex = isLastSlide ? 0 : currentIndex + 1;
+    setCurrentIndex(newIndex);
   };
 
-  useEffect(() => {
-    const slide = setInterval(() => {
-      nextSlide();
-    }, 5000);
-    return () => clearInterval(slide);
-  }, [currentSlide]);
-
-  const images = [
-    img,
-    "https://images.unsplash.com/photo-1575428652377-a2d80e2277fc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-    "https://images.unsplash.com/photo-1592367630397-65872fe016e9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-  ];
   return (
-    <div className="overflow-hidden">
+    <div className="max-w-[1400px] h-[500px] w-full m-auto relative group">
       <div
-        className="flex items-center justify-center relative h-[500px] w-[300vw] transition-all ease duration-500"
-        style={{ transform: `translateX(-${currentSlide * 100}vw)` }}
-      >
-        <Image className="object-cover h-full w-screen" src={images[0]} alt="first slide" width={1500} height={500} />
-        <Image className="object-cover h-full w-screen" src={images[1]} alt="second slide" width={1500} height={700} />
-        <Image className="object-cover h-full w-screen" src={images[2]} alt="third slide" width={1500} height={700} />
+        style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
+        className="w-full h-full rounded-2xl bg-center bg-cover duration-500"
+      ></div>
+      {/* Left Arrow */}
+      <div className="hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer">
+        <ChevronLeftIcon onClick={prevSlide} />
       </div>
-
-      <div className="absolute flex gap-8 text-2xl top-[83%] left-1/2 translate-x-[-50%] translate-y-[-50%]">
-        <div onClick={prevSlide}>
-          <ChevronLeftIcon />
-        </div>
-        <div onClick={nextSlide}>
-          <ChevronRightIcon />
-        </div>
+      {/* Right Arrow */}
+      <div className="hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer">
+        <ChevronRightIcon onClick={nextSlide} />
       </div>
     </div>
   );
-};
+}
 
-export default Carousel;
+export default App;
