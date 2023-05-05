@@ -9,7 +9,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
-import PersonIcon from "@mui/icons-material/Person";
+import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 
 const Navbar = ({ user }: Session) => {
   const [userMenu, setUserMenu] = useState(false);
@@ -26,40 +26,29 @@ const Navbar = ({ user }: Session) => {
   return (
     <nav className="flex justify-between items-center py-[1.1rem] px-4">
       <Link className="focus:outline-primary" href={"/"}>
-        <h1 className="text-2xl font-bold text-primary italic">PREMIUM CAPS</h1>
+        <h1 className="text-2xl font-bold text-primary italic whitespace-nowrap">PREMIUM CAPS</h1>
       </Link>
+      {/* DESKTOP MENU */}
       <ul className="md:flex gap-8 text-gray-600 hidden md:block absolute md:static bg-white top-12 right-5 p-5 z-10">
-        <li>
-          <a href="#" className="focus:outline-primary">
-            Home
-          </a>
-        </li>
-        <li>
-          <a href="#" className="focus:outline-primary">
-            Products
-          </a>
-        </li>
-        <li>
-          <a href="#" className="focus:outline-primary">
-            About
-          </a>
-        </li>
-        <li>
-          <a href="#" className="focus:outline-primary">
-            Contact
-          </a>
-        </li>
-        <li>
-          <a href="#" className="focus:outline-primary">
-            Tracking
-          </a>
-        </li>
+        {menuLinks.map((link) => (
+          <li>
+            <a href={link.href}>{link.name}</a>
+          </li>
+        ))}
       </ul>
-
       {/* MOBILE MENU ICONS */}
-      <div className="md:hidden flex gap-4" onClick={() => setOpenMobileMenu(!openMobileMenu)}>
-        <PersonIcon />
-        {openMobileMenu ? <CloseIcon /> : <MenuIcon />}
+      <div className="flex gap-4 md:hidden">
+        <div className="text-gray-600">
+          <ShoppingBagOutlinedIcon />
+        </div>
+        {user && (
+          <div className="text-gray-600">
+            <FavoriteIcon />
+          </div>
+        )}
+        <div className="md:hidden" onClick={() => setOpenMobileMenu(!openMobileMenu)}>
+          {openMobileMenu ? <CloseIcon /> : <MenuIcon />}
+        </div>
       </div>
 
       {/* MOBILE MENU */}
@@ -70,6 +59,36 @@ const Navbar = ({ user }: Session) => {
               {link.name}
             </Link>
           ))}
+          {user && (
+            <>
+              <div className="flex justify-center items-center gap-4">
+                <Image
+                  src={user?.image as string}
+                  alt={user?.name as string}
+                  width={45}
+                  height={45}
+                  onClick={() => setUserMenu(!userMenu)}
+                  className="rounded-full cursor-pointer outline outline-primary"
+                  tabIndex={0}
+                />
+                <div className="flex gap-2">
+                  <Link href={"./api/auth/signout"}>Wishlist</Link>
+                  <Link href={"./api/auth/signout"}>Profile</Link>
+                  <Link href={"./api/auth/signout"}>Sign Out</Link>
+                </div>
+              </div>
+            </>
+          )}
+          {!user && (
+            <div className="flex gap-4 items-center">
+              <Link href={"./api/auth/signin"}>
+                <button className="bg-primary py-1 px-4 rounded-md text-white">Log In</button>
+              </Link>
+              <Link href={"./api/auth/signin"}>
+                <button className="bg-secondary py-1 px-4 rounded-md text-white">Sign Up</button>
+              </Link>
+            </div>
+          )}
         </nav>
       )}
 
