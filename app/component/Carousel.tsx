@@ -55,7 +55,6 @@ function App() {
         className="w-full h-full rounded-2xl bg-center bg-cover duration-500"
         alt={slides[currentIndex].alt}
       ></div>
-      {/* Left Arrow */}
       <button
         className="hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer"
         onClick={prevSlide}
@@ -64,7 +63,6 @@ function App() {
       >
         <ChevronLeftIcon />
       </button>
-      {/* Right Arrow */}
       <button
         className="hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer"
         onClick={nextSlide}
