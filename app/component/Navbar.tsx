@@ -6,7 +6,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 // ICONS
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
@@ -50,9 +49,16 @@ const Navbar = ({ user }: Session) => {
         )}
         {user && (
           <div className="flex items-center gap-6">
-            <div className="text-gray-600 flex items-center gap-6 [&>*:nth-child(2)]:text-red-600 cursor-pointer">
-              <ShoppingCartIcon />
-              <FavoriteIcon />
+            <div className="text-gray-600 flex items-center gap-6 cursor-pointer">
+              <div className="relative">
+                <ShoppingBagOutlinedIcon />
+                <span className="bg-primary text-white text-sm font-bold w-4 h-4 rounded-full absolute left-2 bottom-3 flex items-center justify-center">
+                  3
+                </span>
+              </div>
+              <div>
+                <FavoriteIcon />
+              </div>
             </div>
             <Image
               src={user?.image as string}
