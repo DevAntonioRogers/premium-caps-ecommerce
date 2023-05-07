@@ -3,6 +3,7 @@ import GoogleProvider from "next-auth/providers/google";
 import FacebookProvider from "next-auth/providers/facebook";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { PrismaClient } from "@prisma/client";
+import Stripe from "stripe";
 
 const prisma = new PrismaClient();
 
@@ -18,6 +19,25 @@ export const authOptions = {
       clientSecret: process.env.FACEBOOK_CLIENT_SECRET as string,
     }),
   ],
+  events: {
+    createUser: async ({ user }) => {
+      const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
+        apiVersion: "2022-11-15",
+      });
+      //CREATE STRIPE CUSTOMER
+      if (user.name && user.email) {
+        const customer = await stripe.customers.create({
+          email: user.email || undefined,
+          name: user.name || undefined,
+        });
+        // UPDATE PRISMA WITH STRIPE CUSTOMER ID
+        await prisma.user.update({
+          where: { id: user.id },
+          data: { stripeCustomerId: customer.id },
+        });
+      }
+    },
+  },
 };
 
 export default NextAuth(authOptions);
