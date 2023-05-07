@@ -22,7 +22,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html lang="en" className={poppins.className}>
       <body className="lg:mx-24 mx-4">
         <Navbar user={session?.user} />
-        <Header />
         {children}
       </body>
     </html>

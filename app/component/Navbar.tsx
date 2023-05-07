@@ -31,7 +31,7 @@ const Navbar = ({ user }: Session) => {
       {/* DESKTOP MENU */}
       <ul className="md:flex gap-8 text-gray-600 hidden md:visible absolute md:static bg-white top-12 right-5 p-5 z-10">
         {menuLinks.map((link) => (
-          <li>
+          <li key={link.name}>
             <a href={link.href}>{link.name}</a>
           </li>
         ))}

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
-function App() {
+const Carousel = () => {
   const slides = [
     {
       url: "https://i.ibb.co/qDDtKdw/Slide1.jpg",
@@ -73,6 +73,6 @@ function App() {
       </button>
     </div>
   );
-}
+};
 
-export default App;
+export default Carousel;
