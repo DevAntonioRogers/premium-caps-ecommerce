@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Session } from "next-auth";
 import Image from "next/image";
 import Link from "next/link";
+import Cart from "./Cart";
 
 // ICONS
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -14,6 +15,8 @@ import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 const Navbar = ({ user }: Session) => {
   const [userMenu, setUserMenu] = useState(false);
   const [openMobileMenu, setOpenMobileMenu] = useState(false);
+
+  const [openCart, setOpenCart] = useState(false);
 
   const menuLinks = [
     { href: "#", name: "Home" },
@@ -50,7 +53,7 @@ const Navbar = ({ user }: Session) => {
         {user && (
           <div className="flex items-center gap-6">
             <div className="text-gray-600 flex items-center gap-6 cursor-pointer">
-              <div className="relative">
+              <div onClick={() => setOpenCart(!openCart)} className="relative">
                 <ShoppingBagOutlinedIcon />
                 <span className="bg-primary text-white text-sm font-bold w-4 h-4 rounded-full absolute left-2 bottom-3 flex items-center justify-center">
                   3
@@ -140,6 +143,9 @@ const Navbar = ({ user }: Session) => {
         </nav>
       )}
       {/* MOBILE MENU END */}
+
+      {/* CART WHEN ICON IS CLICKED */}
+      {openCart && <Cart />}
     </nav>
   );
 };
