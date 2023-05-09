@@ -18,6 +18,10 @@ const Navbar = ({ user }: Session) => {
 
   const [openCart, setOpenCart] = useState(false);
 
+  const cartToggle = () => {
+    setOpenCart(!openCart);
+  };
+
   const menuLinks = [
     { href: "#", name: "Home" },
     { href: "#", name: "Products" },
