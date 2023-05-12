@@ -2,7 +2,6 @@ import Navbar from "./component/Navbar";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { Poppins } from "next/font/google";
-import { Providers } from "./redux/provider";
 import "./globals.css";
 
 export const metadata = {
@@ -21,10 +20,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="en" className={poppins.className}>
       <body className="lg:mx-24 mx-4">
-        <Providers>
-          <Navbar user={session?.user} />
-          {children}
-        </Providers>
+        <Navbar user={session?.user} />
+        {children}
       </body>
     </html>
   );
