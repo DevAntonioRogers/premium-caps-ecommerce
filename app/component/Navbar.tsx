@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Session } from "next-auth";
+import { useCartStore } from "@/store";
 import Image from "next/image";
 import Link from "next/link";
 import Cart from "./Cart";
@@ -16,6 +17,8 @@ const Navbar = ({ user }: Session) => {
   const [userMenu, setUserMenu] = useState(false);
   const [openMobileMenu, setOpenMobileMenu] = useState(false);
   const [openCart, setOpenCart] = useState(false);
+
+  const cartStore = useCartStore();
 
   const menuLinks = [
     { href: "#", name: "Home" },
@@ -52,7 +55,7 @@ const Navbar = ({ user }: Session) => {
         {user && (
           <div className="flex items-center gap-6">
             <div className="text-gray-600 flex items-center gap-6 cursor-pointer">
-              <div onClick={() => setOpenCart(!openCart)} className="relative">
+              <div onClick={() => cartStore.toggleCart()} className="relative">
                 <ShoppingBagOutlinedIcon />
                 <span className="bg-primary text-white text-sm font-bold w-4 h-4 rounded-full absolute left-2 bottom-3 flex items-center justify-center">
                   3
@@ -144,7 +147,7 @@ const Navbar = ({ user }: Session) => {
       {/* MOBILE MENU END */}
 
       {/* CART WHEN ICON IS CLICKED */}
-      {openCart && <Cart />}
+      {!cartStore.isOpen && <Cart />}
     </nav>
   );
 };

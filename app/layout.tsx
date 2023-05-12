@@ -1,4 +1,5 @@
 import Navbar from "./component/Navbar";
+import Hydrate from "./component/Hydrate";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { Poppins } from "next/font/google";
@@ -20,8 +21,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="en" className={poppins.className}>
       <body className="lg:mx-24 mx-4">
-        <Navbar user={session?.user} />
-        {children}
+        <Hydrate>
+          <Navbar user={session?.user} />
+          {children}
+        </Hydrate>
       </body>
     </html>
   );
