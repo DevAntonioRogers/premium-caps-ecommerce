@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Session } from "next-auth";
+import { useSelector, useDispatch } from "react-redux";
 import Image from "next/image";
 import Link from "next/link";
 import Cart from "./Cart";
@@ -15,12 +16,7 @@ import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 const Navbar = ({ user }: Session) => {
   const [userMenu, setUserMenu] = useState(false);
   const [openMobileMenu, setOpenMobileMenu] = useState(false);
-
   const [openCart, setOpenCart] = useState(false);
-
-  const cartToggle = () => {
-    setOpenCart(!openCart);
-  };
 
   const menuLinks = [
     { href: "#", name: "Home" },

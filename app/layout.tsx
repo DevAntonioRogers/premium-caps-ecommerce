@@ -1,9 +1,9 @@
 import Navbar from "./component/Navbar";
-import Header from "./component/Carousel";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
-import "./globals.css";
 import { Poppins } from "next/font/google";
+import { Providers } from "./redux/provider";
+import "./globals.css";
 
 export const metadata = {
   title: "Create Next App",
@@ -21,8 +21,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="en" className={poppins.className}>
       <body className="lg:mx-24 mx-4">
-        <Navbar user={session?.user} />
-        {children}
+        <Providers>
+          <Navbar user={session?.user} />
+          {children}
+        </Providers>
       </body>
     </html>
   );
