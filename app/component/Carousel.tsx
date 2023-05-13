@@ -1,76 +1,30 @@
-"use client";
-import React, { useState, useEffect } from "react";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import tests from "@/public/test.jpeg";
+import testss from "@/public/testsss.png";
+import testers from "@/public/TESTERSS.png";
+import Image from "next/image";
 
 const Carousel = () => {
-  const slides = [
-    {
-      url: "https://i.ibb.co/qDDtKdw/Slide1.jpg",
-      alt: "First slide",
-    },
-    {
-      url: "https://i.ibb.co/z2m022Z/Adobe-Stock-246868093.jpg",
-      alt: "Second slide",
-    },
-  ];
-
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const prevSlide = () => {
-    const isFirstSlide = currentIndex === 0;
-    const newIndex = isFirstSlide ? slides.length - 1 : currentIndex - 1;
-    setCurrentIndex(newIndex);
-  };
-
-  const nextSlide = () => {
-    const isLastSlide = currentIndex === slides.length - 1;
-    const newIndex = isLastSlide ? 0 : currentIndex + 1;
-    setCurrentIndex(newIndex);
-  };
-
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === "ArrowLeft") {
-        prevSlide();
-      } else if (e.key === "ArrowRight") {
-        nextSlide();
-      }
-    };
-    document.addEventListener("keydown", handleKeyDown);
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [prevSlide, nextSlide]);
-
   return (
-    <div
-      className="max-w-[1400px] h-[500px] w-full m-auto relative group focus:outline-primary focus:rounded-xl"
-      role="region"
-      aria-label="Image slideshow"
-      tabIndex={0}
-    >
-      <div
-        style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
-        className="w-full h-full rounded-2xl bg-center bg-cover duration-500"
-        alt={slides[currentIndex].alt}
-      ></div>
-      <button
-        className="hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer"
-        onClick={prevSlide}
-        aria-label="Previous slide"
-        tabIndex={0}
-      >
-        <ChevronLeftIcon />
-      </button>
-      <button
-        className="hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer"
-        onClick={nextSlide}
-        aria-label="Next slide"
-        tabIndex={0}
-      >
-        <ChevronRightIcon />
-      </button>
+    <div className="relative grid md:grid-rows-2 md:grid-cols-4 grid-cols-1 grid-rows-none gap-4 md:max-h-[500px] h-full ">
+      <div className="md:row-start-1 md:col-start-1 md:row-end-2 md:col-end-2 md:h-full h-[300px]">
+        <Image className="h-full w-full object-cover" src={tests} alt="test" width={0} height={0} />
+      </div>
+
+      <div className=" relative md:row-start-1 md:col-start-2 md:row-end-3 md:col-end-4 md:h-full h-[300px]">
+        <Image className="h-full w-full object-cover" src={testers} alt="test" width={0} height={0} />
+      </div>
+
+      <div className="md:col-start-4 md:row-end-2 md:col-end-5 md:h-full h-[300px]">
+        <Image className="h-full w-full object-cover" src={tests} alt="test" width={0} height={0} />
+      </div>
+
+      <div className=" hidden md:block md:row-start-2 md:col-start-4 md:row-end-3 md:col-end-5">
+        <Image className="h-full w-full object-cover" src={tests} alt="test" width={0} height={0} />
+      </div>
+
+      <div className="hidden md:block md:row-start-2 md:col-start-1 md:row-end-3 md:col-end-2">
+        <Image className="h-full w-full object-cover" src={tests} alt="test" width={0} height={0} />
+      </div>
     </div>
   );
 };
