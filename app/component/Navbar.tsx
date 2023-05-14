@@ -57,9 +57,11 @@ const Navbar = ({ user }: Session) => {
             <div className="text-gray-600 flex items-center gap-6 cursor-pointer">
               <div onClick={() => cartStore.toggleCart()} className="relative">
                 <ShoppingBagOutlinedIcon />
-                <span className="bg-primary text-white text-sm font-bold w-4 h-4 rounded-full absolute left-2 bottom-3 flex items-center justify-center">
-                  3
-                </span>
+                {cartStore.cart.length > 0 && (
+                  <span className="bg-primary text-white text-sm font-bold w-4 h-4 rounded-full absolute left-2 bottom-3 flex items-center justify-center">
+                    {cartStore.cart.length}
+                  </span>
+                )}
               </div>
               <div>
                 <FavoriteIcon />

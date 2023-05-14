@@ -1,5 +1,6 @@
 import Stripe from "stripe";
 import Product from "./Product";
+import AddToCartButton from "./AddToCartButton";
 
 const Products = async () => {
   const getProducts = async () => {
@@ -29,7 +30,10 @@ const Products = async () => {
   return (
     <main>
       {products.map((product) => (
-        <Product {...product} key={product.id} />
+        <>
+          <Product {...product} key={product.id} />
+          <AddToCartButton {...product} />
+        </>
       ))}
     </main>
   );
