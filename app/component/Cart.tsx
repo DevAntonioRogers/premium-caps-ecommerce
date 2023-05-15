@@ -1,9 +1,9 @@
 import { useCartStore } from "@/store";
 import Image from "next/image";
-import AddCircleIcon from "@mui/icons-material/AddCircle";
-import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import { totalPrice } from "@/utils/TotalPrice";
 import formatPrice from "@/utils/PriceFormat";
+import IncrementButton from "../UI/IncrementButton";
+import DecrementButton from "../UI/DecrementButton";
 
 const Cart = () => {
   const cartStore = useCartStore();
@@ -21,33 +21,9 @@ const Cart = () => {
                 <div>
                   <h2>Quantity: {product.quantity}</h2>
                   {/* INCREMENT PRODUCT QUANITY */}
-                  <button
-                    onClick={() =>
-                      cartStore.addToCart({
-                        id: product.id,
-                        unit_amount: product.unit_amount,
-                        quantity: product.quantity,
-                        name: product.name,
-                        image: product.image,
-                      })
-                    }
-                  >
-                    <AddCircleIcon />
-                  </button>
+                  <IncrementButton product={product} />
                   {/* DECREASE PRODUCT AMOUNT */}
-                  <button
-                    onClick={() =>
-                      cartStore.removeProduct({
-                        id: product.id,
-                        unit_amount: product.unit_amount,
-                        quantity: product.quantity,
-                        name: product.name,
-                        image: product.image,
-                      })
-                    }
-                  >
-                    <RemoveCircleIcon />
-                  </button>
+                  <DecrementButton product={product} />
                 </div>
                 <p>{product.unit_amount && formatPrice(product.unit_amount)}</p>
                 <span>Total: {formatPrice(total)}</span>

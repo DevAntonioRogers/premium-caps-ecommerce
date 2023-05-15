@@ -1,7 +1,8 @@
 "use client";
 import { useCartStore } from "@/store";
+import { ProductType } from "@/Types/ProductTypes";
 
-const AddToCartButton = ({ id, image, unit_amount, quantity, name }) => {
+const AddToCartButton = ({ id, image, unit_amount, quantity, name }: ProductType) => {
   const cartStore = useCartStore();
 
   return (

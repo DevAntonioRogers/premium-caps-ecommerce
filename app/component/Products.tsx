@@ -1,6 +1,6 @@
 import Stripe from "stripe";
 import Product from "./Product";
-import AddToCartButton from "./AddToCartButton";
+import AddToCartButton from "../UI/AddToCartButton";
 
 const Products = async () => {
   const getProducts = async () => {
