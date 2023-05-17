@@ -1,5 +1,7 @@
 "use client";
 
+import { Triangle } from "react-loader-spinner";
+
 import { ReactNode, useEffect, useState } from "react";
 
 export default function Hydrate({ children }: { children: ReactNode }) {
@@ -9,5 +11,15 @@ export default function Hydrate({ children }: { children: ReactNode }) {
     setIsHydrated(true);
   }, []);
 
-  return <>{isHydrdated ? <>{children}</> : <div>Loading...</div>}</>;
+  return (
+    <>
+      {isHydrdated ? (
+        <>{children}</>
+      ) : (
+        <div className="h-screen flex items-center justify-center mx-0">
+          <h1 className="text-3xl font-bold italic text-primary">Loading...</h1>
+        </div>
+      )}
+    </>
+  );
 }

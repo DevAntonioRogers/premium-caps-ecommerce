@@ -49,7 +49,7 @@ export const useCartStore = create<CartState>()(
           const filteredCart = state.cart.filter((cartItem) => cartItem.id !== item.id)
           return {cart: filteredCart}
         }
-      }),
+      })
       
       
     }),
