@@ -93,9 +93,15 @@ const Navbar = ({ user }: Session) => {
 
       {/* MOBILE MENU ICONS */}
       <div className="flex gap-4 md:hidden">
-        <div className="text-gray-600">
+        <div className="text-gray-600 relative" onClick={() => cartStore.toggleCart()}>
           <ShoppingBagOutlinedIcon />
+          {cartStore.cart.length > 0 && (
+            <span className="bg-primary text-white text-sm font-bold w-4 h-4 rounded-full absolute left-2 bottom-3 flex items-center justify-center">
+              {cartStore.cart.length}
+            </span>
+          )}
         </div>
+
         {user && (
           <div className="text-gray-600">
             <FavoriteIcon />
