@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Session } from "next-auth";
 import { useCartStore } from "@/store";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import Cart from "./Cart";
@@ -16,7 +17,6 @@ import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 const Navbar = ({ user }: Session) => {
   const [userMenu, setUserMenu] = useState(false);
   const [openMobileMenu, setOpenMobileMenu] = useState(false);
-  const [openCart, setOpenCart] = useState(false);
 
   const cartStore = useCartStore();
 
@@ -57,11 +57,17 @@ const Navbar = ({ user }: Session) => {
             <div className="text-gray-600 flex items-center gap-6 cursor-pointer">
               <div onClick={() => cartStore.toggleCart()} className="relative">
                 <ShoppingBagOutlinedIcon />
-                {cartStore.cart.length > 0 && (
-                  <span className="bg-primary text-white text-sm font-bold w-4 h-4 rounded-full absolute left-2 bottom-3 flex items-center justify-center">
-                    {cartStore.cart.length}
-                  </span>
-                )}
+                <AnimatePresence>
+                  {cartStore.cart.length > 0 && (
+                    <motion.span
+                      animate={{ scale: 1 }}
+                      initial={{ scale: 0 }}
+                      className="bg-primary text-white text-sm font-bold w-5 h-5 rounded-full absolute left-2 bottom-3 flex items-center justify-center"
+                    >
+                      {cartStore.cart.length}
+                    </motion.span>
+                  )}
+                </AnimatePresence>
               </div>
               <div>
                 <FavoriteIcon />
@@ -95,11 +101,17 @@ const Navbar = ({ user }: Session) => {
       <div className="flex gap-4 md:hidden">
         <div className="text-gray-600 relative" onClick={() => cartStore.toggleCart()}>
           <ShoppingBagOutlinedIcon />
-          {cartStore.cart.length > 0 && (
-            <span className="bg-primary text-white text-sm font-bold w-4 h-4 rounded-full absolute left-2 bottom-3 flex items-center justify-center">
-              {cartStore.cart.length}
-            </span>
-          )}
+          <AnimatePresence>
+            {cartStore.cart.length > 0 && (
+              <motion.span
+                animate={{ scale: 1 }}
+                initial={{ scale: 0 }}
+                className="bg-primary text-white text-sm font-bold w-4 h-4 rounded-full absolute left-2 bottom-3 flex items-center justify-center"
+              >
+                {cartStore.cart.length}
+              </motion.span>
+            )}
+          </AnimatePresence>
         </div>
 
         {user && (
@@ -155,7 +167,7 @@ const Navbar = ({ user }: Session) => {
       {/* MOBILE MENU END */}
 
       {/* CART WHEN ICON IS CLICKED */}
-      {!cartStore.isOpen && <Cart />}
+      <AnimatePresence>{!cartStore.isOpen && <Cart />}</AnimatePresence>
     </nav>
   );
 };

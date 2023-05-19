@@ -1,10 +1,10 @@
-import Carousel from "./component/Carousel";
+import Hero from "./component/Hero";
 import Products from "./component/Products";
 
 export default function Home() {
   return (
     <main>
-      <Carousel />
+      <Hero />
       <Products />
     </main>
   );
