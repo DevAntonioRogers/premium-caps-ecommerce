@@ -13,6 +13,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
+import WishList from "./Wishlist";
 
 const Navbar = ({ user }: Session) => {
   const [userMenu, setUserMenu] = useState(false);
@@ -29,7 +30,7 @@ const Navbar = ({ user }: Session) => {
   ];
 
   return (
-    <nav className="flex justify-between items-center py-[1.1rem] px-4">
+    <nav className="flex justify-between items-center py-[1.1rem] px-4 sticky top-0 z-50 bg-white">
       <Link className="focus:outline-primary" href={"/"}>
         <h1 className="text-2xl font-bold text-primary italic whitespace-nowrap">PREMIUM CAPS</h1>
       </Link>
@@ -69,7 +70,7 @@ const Navbar = ({ user }: Session) => {
                   )}
                 </AnimatePresence>
               </div>
-              <div>
+              <div onClick={() => cartStore.toggleWishList()}>
                 <FavoriteIcon />
               </div>
             </div>
@@ -168,6 +169,9 @@ const Navbar = ({ user }: Session) => {
 
       {/* CART WHEN ICON IS CLICKED */}
       <AnimatePresence>{!cartStore.isOpen && <Cart />}</AnimatePresence>
+
+      {/* WISHLIST WHEN ICON IS CLICK */}
+      {!cartStore.openWishlist && <WishList user={user} />}
     </nav>
   );
 };

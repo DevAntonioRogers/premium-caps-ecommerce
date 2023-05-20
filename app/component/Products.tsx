@@ -1,8 +1,12 @@
 import Stripe from "stripe";
 import Product from "./Product";
 import AddToCartButton from "../UI/AddToCartButton";
+import AddtoWishlistButton from "../UI/AddToWishlistButton";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/pages/api/auth/[...nextauth]";
 
 const Products = async () => {
+  const session = await getServerSession(authOptions);
   const getProducts = async () => {
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
       apiVersion: "2022-11-15",
@@ -30,10 +34,13 @@ const Products = async () => {
   return (
     <main>
       {products.map((product) => (
-        <>
+        <div>
           <Product {...product} key={product.id} />
-          <AddToCartButton {...product} />
-        </>
+          <div className="flex gap-6">
+            <AddToCartButton {...product} />
+            <AddtoWishlistButton {...product} user={session?.user} />
+          </div>
+        </div>
       ))}
     </main>
   );
