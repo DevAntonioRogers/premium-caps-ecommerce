@@ -4,4 +4,5 @@ export type CartType = {
   id: string
   quantity?: number | 1
   unit_amount: number | null
+  
 }

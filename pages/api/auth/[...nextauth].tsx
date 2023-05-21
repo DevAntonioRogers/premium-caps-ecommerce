@@ -38,6 +38,12 @@ export const authOptions: NextAuthOptions = {
       }
     },
   },
+  callbacks: {
+    async session({ session, token, user }) {
+      session.user = user;
+      return session;
+    },
+  },
 };
 
 export default NextAuth(authOptions);

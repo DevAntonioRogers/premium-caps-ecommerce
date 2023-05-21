@@ -4,6 +4,8 @@ import { totalPrice } from "@/utils/TotalPrice";
 import formatPrice from "@/utils/PriceFormat";
 import IncrementButton from "../UI/IncrementButton";
 import DecrementButton from "../UI/DecrementButton";
+import Checkout from "./Checkout";
+import OrderSuccess from "./OrderSuccess";
 
 const Cart = () => {
   const cartStore = useCartStore();
@@ -11,7 +13,15 @@ const Cart = () => {
 
   return (
     <div onClick={() => cartStore.toggleCart()} className="fixed w-full h-screen top-0 left-0 bg-black/25 z-50">
-      <div onClick={(e) => e.stopPropagation()} className="bg-white absolute right-0 top-0 w-2/5 h-screen p-12">
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className="bg-white absolute right-0 top-0 w-2/5 h-screen p-12 overflow-x-scroll"
+      >
+        {cartStore.onCheckout === "checkout" && (
+          <button onClick={() => cartStore.setCheckout("cart")} className="text-sm font-bold pb-12">
+            Back to Cart
+          </button>
+        )}
         {cartStore.onCheckout === "cart" && (
           <>
             {cartStore.cart.map((product) => (
@@ -31,6 +41,13 @@ const Cart = () => {
             ))}
           </>
         )}
+        {cartStore.cart.length > 0 && cartStore.onCheckout === "cart" ? (
+          <button onClick={() => cartStore.setCheckout("checkout")} className="bg-primary py-2 mt-4 w-full">
+            Checkout
+          </button>
+        ) : null}
+        {cartStore.onCheckout === "checkout" && <Checkout />}
+        {cartStore.onCheckout === "success" && <OrderSuccess />}
       </div>
     </div>
   );

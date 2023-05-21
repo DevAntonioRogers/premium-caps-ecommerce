@@ -9,24 +9,30 @@ type CartState = {
   onWishList: string
   cart: CartType[]
   wishList: CartType[]
+  paymentIntent: string
+  clearCart: () => void
   addToWishlist: (item: CartType) => void
   removeFromWishlist:(item: CartType) => void
   addToCart: (item: CartType) => void
   removeProduct: (item: CartType) => void
   toggleCart: () => void
   toggleWishList: () => void
+  setPaymentIntent: (val: string) => void
+  setCheckout: (val: string) => void
 }
 
 export const useCartStore = create<CartState>()(
-  persist(
+  persist (
     (set) => ({
       // INITIAL STATES
       cart: [],
       isOpen: false,
       openWishlist: false,
+      paymentIntent: "",
       wishList: [],
       onWishList: "wishlist",
       onCheckout: "cart",
+
       
       
       // SETTING STATES
@@ -90,7 +96,11 @@ export const useCartStore = create<CartState>()(
           return {wishList: filteredWishList}
         }
       }),
+      setPaymentIntent : (val) => set((set) => ({paymentIntent: val})),
+      setCheckout : (val) => set((set) => ({onCheckout: val})),
+      clearCart: () => set((state) => ({ cart: [] })),
     }),
+    
     {name: "cart-store"}
   )
 )
