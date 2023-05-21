@@ -5,4 +5,5 @@ export type ProductType = {
   id: string
   quantity?: number | 1
   description?: string | null
+  user: string
 }

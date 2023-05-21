@@ -1,4 +1,4 @@
-import {create} from 'zustand'
+import {create, } from 'zustand'
 import {persist} from 'zustand/middleware'
 import { CartType } from './Types/CartTypes'
 
@@ -66,7 +66,7 @@ export const useCartStore = create<CartState>()(
         if (existingItem) {
           const updatedWishList = state.wishList.map((wishItem) => {
             if(wishItem.id === item.id){
-              return {...wishItem, quantity: wishItem.quantity! + 1}
+              return {...wishItem, quantity: 1}
             }
             return wishItem
           })
@@ -90,10 +90,6 @@ export const useCartStore = create<CartState>()(
           return {wishList: filteredWishList}
         }
       }),
-
-      
-      
-      
     }),
     {name: "cart-store"}
   )
