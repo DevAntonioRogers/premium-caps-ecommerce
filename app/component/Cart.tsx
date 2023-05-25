@@ -45,7 +45,7 @@ const Cart = () => {
         )}
         {cartStore.cart.length < 1 && cartStore.onCheckout === "cart" ? (
           <div className="h-full flex items-center justify-center">
-            <span className="text-xl uppercase ">Your cart is empty</span>
+            <span className="text-xl uppercase font-bold italic whitespace-nowrap">Your cart is empty</span>
           </div>
         ) : null}
         {cartStore.cart.length > 0 && cartStore.onCheckout === "cart" ? (
