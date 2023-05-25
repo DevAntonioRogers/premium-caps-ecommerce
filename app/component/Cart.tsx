@@ -1,11 +1,13 @@
 import { useCartStore } from "@/store/useCartStore";
-import Image from "next/image";
 import { totalPrice } from "@/utils/TotalPrice";
+
+import Image from "next/image";
 import formatPrice from "@/utils/PriceFormat";
 import IncrementButton from "../UI/IncrementButton";
 import DecrementButton from "../UI/DecrementButton";
 import Checkout from "./Checkout";
 import OrderSuccess from "./OrderSuccess";
+import emptycart from "@/public/emptycart.png";
 
 const Cart = () => {
   const cartStore = useCartStore();
@@ -15,7 +17,7 @@ const Cart = () => {
     <div onClick={() => cartStore.toggleCart()} className="fixed w-full h-screen top-0 left-0 bg-black/25 z-50">
       <div
         onClick={(e) => e.stopPropagation()}
-        className="bg-white absolute right-0 top-0 w-2/5 h-screen p-12 overflow-x-scroll"
+        className="bg-white absolute right-0 top-0 md:w-2/5 w-3/5 h-screen p-12 overflow-x-scroll"
       >
         {cartStore.onCheckout === "checkout" && (
           <button onClick={() => cartStore.setCheckout("cart")} className="text-sm font-bold pb-12">
@@ -41,6 +43,11 @@ const Cart = () => {
             ))}
           </>
         )}
+        {cartStore.cart.length < 1 && cartStore.onCheckout === "cart" ? (
+          <div className="h-full flex items-center justify-center">
+            <span className="text-xl uppercase ">Your cart is empty</span>
+          </div>
+        ) : null}
         {cartStore.cart.length > 0 && cartStore.onCheckout === "cart" ? (
           <button onClick={() => cartStore.setCheckout("checkout")} className="bg-primary py-2 mt-4 w-full">
             Checkout

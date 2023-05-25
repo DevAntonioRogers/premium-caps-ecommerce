@@ -8,7 +8,10 @@ const WishList = ({ user }: Session) => {
   return (
     <div onClick={() => wishlistStore.toggleWishList()} className="fixed w-full h-screen top-0 left-0 bg-black/25 z-50">
       <div>
-        <div onClick={(e) => e.stopPropagation()} className="bg-white absolute right-0 top-0 w-2/5 h-screen p-12">
+        <div
+          onClick={(e) => e.stopPropagation()}
+          className="bg-white absolute right-0 top-0 md:w-2/5 w-3/5 h-screen p-12"
+        >
           {wishlistStore.onWishList === "wishlist" && (
             <>
               <h1>Hello {user?.name}</h1>

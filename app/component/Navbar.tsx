@@ -118,7 +118,7 @@ const Navbar = ({ user }: Session) => {
         </div>
 
         {user && (
-          <div className="text-gray-600">
+          <div onClick={() => wishlistStore.toggleWishList()} className="text-gray-600">
             <FavoriteIcon />
           </div>
         )}
