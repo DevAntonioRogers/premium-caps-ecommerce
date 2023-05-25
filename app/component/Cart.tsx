@@ -1,4 +1,4 @@
-import { useCartStore } from "@/store";
+import { useCartStore } from "@/store/useCartStore";
 import Image from "next/image";
 import { totalPrice } from "@/utils/TotalPrice";
 import formatPrice from "@/utils/PriceFormat";

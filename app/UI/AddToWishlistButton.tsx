@@ -1,19 +1,19 @@
 "use client";
-import { useCartStore } from "@/store";
+import { useWishlistStore } from "@/store/useWishlistStore";
 import { ProductType } from "@/Types/ProductTypes";
 import { useState } from "react";
 
 const AddtoWishlistButton = ({ id, image, unit_amount, quantity, name, user }: ProductType) => {
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
-  const cartStore = useCartStore();
-  const alreadyInWishList = cartStore.wishList.some((item) => item.id === id);
+  const wishlistStore = useWishlistStore();
+  const alreadyInWishList = wishlistStore.wishList.some((item) => item.id === id);
   const handleWishList = () => {
     if (user) {
       if (alreadyInWishList) {
         return;
       }
-      cartStore.addToWishlist({ id, image, unit_amount, quantity, name });
+      wishlistStore.addToWishlist({ id, image, unit_amount, quantity, name });
       setMessage(`${name} has been added to your wishlist`);
       setTimeout(() => {
         setMessage("");

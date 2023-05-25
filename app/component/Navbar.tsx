@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { Session } from "next-auth";
-import { useCartStore } from "@/store";
+import { useCartStore } from "@/store/useCartStore";
+import { useWishlistStore } from "@/store/useWishlistStore";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -20,6 +21,7 @@ const Navbar = ({ user }: Session) => {
   const [openMobileMenu, setOpenMobileMenu] = useState(false);
 
   const cartStore = useCartStore();
+  const wishlistStore = useWishlistStore();
 
   const menuLinks = [
     { href: "#", name: "Home" },
@@ -30,7 +32,7 @@ const Navbar = ({ user }: Session) => {
   ];
 
   return (
-    <nav className="flex justify-between items-center py-[1.1rem] px-4 sticky top-0 z-50 bg-white">
+    <nav className="flex justify-between items-center py-[1.1rem] bg-white">
       <Link className="focus:outline-primary" href={"/"}>
         <h1 className="text-2xl font-bold text-primary italic whitespace-nowrap">PREMIUM CAPS</h1>
       </Link>
@@ -70,7 +72,7 @@ const Navbar = ({ user }: Session) => {
                   )}
                 </AnimatePresence>
               </div>
-              <div onClick={() => cartStore.toggleWishList()}>
+              <div onClick={() => wishlistStore.toggleWishList()}>
                 <FavoriteIcon />
               </div>
             </div>
@@ -171,7 +173,7 @@ const Navbar = ({ user }: Session) => {
       <AnimatePresence>{!cartStore.isOpen && <Cart />}</AnimatePresence>
 
       {/* WISHLIST WHEN ICON IS CLICK */}
-      {!cartStore.openWishlist && <WishList user={user} />}
+      {!wishlistStore.openWishlist && <WishList user={user} />}
     </nav>
   );
 };

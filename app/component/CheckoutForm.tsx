@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { PaymentElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import formatPrice from "@/utils/PriceFormat";
-import { useCartStore } from "@/store";
+import { useCartStore } from "@/store/useCartStore";
 
 const CheckoutForm = ({ clientSecret }: { clientSecret: string }) => {
   const stripe = useStripe();

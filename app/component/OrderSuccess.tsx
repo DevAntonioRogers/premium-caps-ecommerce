@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useCartStore } from "@/store";
+import { useCartStore } from "@/store/useCartStore";
 
 const OrderSuccess = () => {
   const cartStore = useCartStore();

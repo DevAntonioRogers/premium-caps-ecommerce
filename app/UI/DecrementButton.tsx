@@ -1,4 +1,4 @@
-import { useCartStore } from "@/store";
+import { useCartStore } from "@/store/useCartStore";
 import { ProductType } from "@/Types/ProductTypes";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 
