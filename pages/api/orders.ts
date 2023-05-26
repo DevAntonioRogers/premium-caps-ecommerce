@@ -26,5 +26,8 @@ export default async function handler(
     } catch (err) {
       res.status(500).json({mesage: 'Failed to fetch orders'})
     }
+  } else {
+    res.setHeader('Allow', 'GET')
+    res.status(405).end('Methods not allowed')
   }
 }

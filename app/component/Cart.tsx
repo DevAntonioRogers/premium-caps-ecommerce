@@ -7,7 +7,6 @@ import IncrementButton from "../UI/IncrementButton";
 import DecrementButton from "../UI/DecrementButton";
 import Checkout from "./Checkout";
 import OrderSuccess from "./OrderSuccess";
-import emptycart from "@/public/emptycart.png";
 
 const Cart = () => {
   const cartStore = useCartStore();

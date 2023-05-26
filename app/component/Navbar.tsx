@@ -92,7 +92,9 @@ const Navbar = ({ user }: Session) => {
                   <li>Sign Out</li>
                 </Link>
                 <li>Favorites</li>
-                <li>Profile</li>
+                <Link href={"./Dashboard"}>
+                  <li>Profile</li>
+                </Link>
               </ul>
             )}
           </div>

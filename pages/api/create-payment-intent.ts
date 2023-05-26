@@ -35,7 +35,7 @@ export default async function handler(
     user: { connect: { id: userSession.user?.id } },
     amount: total,
     currency: "usd",
-    status: "pending",
+    status: "processing",
     paymentIntentID: payment_intent_id,
     products: {
       create: items.map((item) => ({
