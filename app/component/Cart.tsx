@@ -7,6 +7,7 @@ import IncrementButton from "../UI/IncrementButton";
 import DecrementButton from "../UI/DecrementButton";
 import Checkout from "./Checkout";
 import OrderSuccess from "./OrderSuccess";
+import RemoveFromCartButton from "../UI/RemoveFromCartButton";
 
 const Cart = () => {
   const cartStore = useCartStore();
@@ -36,6 +37,7 @@ const Cart = () => {
                   {/* DECREASE PRODUCT AMOUNT */}
                   <DecrementButton product={product} />
                 </div>
+                <RemoveFromCartButton product={product} />
                 <p>{product.unit_amount && formatPrice(product.unit_amount)}</p>
                 <span>Total: {formatPrice(total)}</span>
               </div>

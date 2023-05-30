@@ -37,7 +37,7 @@ const Products = async () => {
         <div>
           <Product {...product} key={product.id} />
           <div className="flex gap-6">
-            <AddToCartButton {...product} />
+            <AddToCartButton {...product} user={session?.user} />
             <AddtoWishlistButton {...product} user={session?.user} />
           </div>
         </div>
