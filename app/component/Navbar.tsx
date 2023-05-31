@@ -5,6 +5,7 @@ import { Session } from "next-auth";
 import { useCartStore } from "@/store/useCartStore";
 import { useWishlistStore } from "@/store/useWishlistStore";
 import { motion, AnimatePresence } from "framer-motion";
+import { signOut } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import Cart from "./Cart";
@@ -88,13 +89,12 @@ const Navbar = ({ user }: Session) => {
 
             {userMenu && (
               <ul className="z-10 absolute right-12 top-20 w-48 bg-white shadow-md rounded-md p-4">
-                <Link href={"./api/auth/signout"}>
-                  <li>Sign Out</li>
-                </Link>
                 <li>Favorites</li>
                 <Link href={"./Dashboard"}>
                   <li>Profile</li>
                 </Link>
+
+                <li onClick={() => signOut()}>Sign Out</li>
               </ul>
             )}
           </div>
