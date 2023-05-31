@@ -11,6 +11,7 @@
   "dependencies": {
     "@emotion/react": "^11.10.8",
     "@emotion/styled": "^11.10.8",
+    "@lottiefiles/react-lottie-player": "^3.5.3",
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.12.2",
     "@next-auth/prisma-adapter": "^1.0.6",

@@ -93,8 +93,9 @@ const Navbar = ({ user }: Session) => {
                 <Link href={"./Dashboard"}>
                   <li>Profile</li>
                 </Link>
-
-                <li onClick={() => signOut()}>Sign Out</li>
+                <li className="cursor-pointer" onClick={() => signOut()}>
+                  Sign Out
+                </li>
               </ul>
             )}
           </div>
