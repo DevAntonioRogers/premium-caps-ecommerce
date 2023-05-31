@@ -27,7 +27,7 @@ const AddToCartButton = ({ id, image, unit_amount, quantity, name, user }: Produ
       }, 2000);
       return;
     } else {
-      setError("Must be signed in");
+      setError("Members Only! Must be signed in");
       setTimeout(() => {
         setError("");
       }, 2000);
