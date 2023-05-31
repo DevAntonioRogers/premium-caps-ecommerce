@@ -1,5 +1,5 @@
-import Navbar from "./component/Navbar";
-import Hydrate from "./component/Hydrate";
+import Navbar from "./components/Navbar";
+import Hydrate from "./components/Hydrate";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { Poppins } from "next/font/google";

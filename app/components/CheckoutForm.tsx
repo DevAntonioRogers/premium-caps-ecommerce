@@ -40,7 +40,7 @@ const CheckoutForm = ({ clientSecret }: { clientSecret: string }) => {
       })
       .then((result) => {
         if (!result.error) {
-          cartStore.setCheckout("processing");
+          cartStore.setCheckout("success");
         }
         setIsLoading(false);
       });
