@@ -4,6 +4,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { Poppins } from "next/font/google";
 import "./globals.css";
+import Footer from "./components/Footer";
 
 export const metadata = {
   title: "Create Next App",
@@ -24,6 +25,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <Hydrate>
           <Navbar user={session?.user} />
           {children}
+          <Footer />
         </Hydrate>
       </body>
     </html>

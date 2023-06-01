@@ -33,7 +33,7 @@ const Navbar = ({ user }: Session) => {
   ];
 
   return (
-    <nav className="flex justify-between items-center py-[1.1rem] bg-white">
+    <nav className="flex justify-between items-center py-[0.7rem] bg-white sticky top-0 z-[99999]">
       <Link className="focus:outline-primary" href={"/"}>
         <h1 className="text-2xl font-bold text-primary italic whitespace-nowrap">PREMIUM CAPS</h1>
       </Link>
