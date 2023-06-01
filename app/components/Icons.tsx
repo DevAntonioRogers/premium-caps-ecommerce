@@ -1,7 +1,22 @@
+"use client";
+
+import LocalShippingIcon from "@mui/icons-material/LocalShipping";
+
 const Icons = () => {
   return (
-    <div className="bg-primary h-28 w-full mt-3 flex items-center text-2xl justify-center">
-      <h1>Icons</h1>
+    <div className="flex mt-10 items-center justify-between">
+      <div className="rounded-full border-gray-400 border p-5">
+        <LocalShippingIcon fontSize="large" />
+      </div>
+      <div className="rounded-full border-gray-400 border p-5">
+        <LocalShippingIcon fontSize="large" />
+      </div>
+      <div className="rounded-full border-gray-400 border p-5">
+        <LocalShippingIcon fontSize="large" />
+      </div>
+      <div className="rounded-full border-gray-400 border p-5">
+        <LocalShippingIcon fontSize="large" />
+      </div>
     </div>
   );
 };
