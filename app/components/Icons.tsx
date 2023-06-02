@@ -3,7 +3,7 @@
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import PaymentsIcon from "@mui/icons-material/Payments";
 import ChatIcon from "@mui/icons-material/Chat";
-import PaidIcon from "@mui/icons-material/Paid";
+import LoyaltyIcon from "@mui/icons-material/Loyalty";
 
 const Icons = () => {
   return (
@@ -30,7 +30,7 @@ const Icons = () => {
 
       <div className="flex items-center gap-4">
         <div className="rounded-full p-3 text-white  bg-black flex">
-          <PaidIcon fontSize="small" color="inherit" />
+          <LoyaltyIcon fontSize="small" color="inherit" />
         </div>
         <div>
           <h2 className="text-[20px] text-primary ">Quality</h2>
