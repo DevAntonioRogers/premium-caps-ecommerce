@@ -7,42 +7,43 @@ import PaidIcon from "@mui/icons-material/Paid";
 
 const Icons = () => {
   return (
-    <div className="flex mt-10 items-center justify-between w-full">
-      <div className="flex items-center gap-4 p-2 justify-center">
-        <div className="rounded-full p-3 text-white  bg-primary">
-          <LocalShippingIcon fontSize="large" color="inherit" />
+    <div className="flex flex-col  md:flex-row mt-10 w-full gap-6 md:gap-1 lg:gap-12">
+      <div className="flex items-center gap-4">
+        <div className="rounded-full p-3 text-white  bg-black flex">
+          <LocalShippingIcon fontSize="small" color="inherit" />
         </div>
         <div>
-          <h2 className="text-2xl text-primary">Free Shipping</h2>
+          <h2 className="text-[20px] text-primary">Free Shipping</h2>
           <h3 className="text-gray-500">Free Shipping for orders over $120</h3>
         </div>
       </div>
 
-      <div className="flex items-center gap-2 p-2">
-        <div className="rounded-full p-3 text-white  bg-primary">
-          <ChatIcon fontSize="large" color="inherit" />
+      <div className="flex items-center gap-4">
+        <div className="rounded-full p-3 text-white bg-black flex">
+          <ChatIcon fontSize="small" color="inherit" />
         </div>
         <div>
-          <h2 className="text-2xl text-primary">Support</h2>
+          <h2 className="text-[20px] text-primary">Support</h2>
           <h3 className="text-gray-500">24 hours a day, 7 days a week</h3>
         </div>
       </div>
-      <div className="flex items-center gap-2 p-2">
-        <div className="rounded-full p-3 text-white  bg-primary">
-          <PaymentsIcon fontSize="large" color="inherit" />
+
+      <div className="flex items-center gap-4">
+        <div className="rounded-full p-3 text-white  bg-black flex">
+          <PaidIcon fontSize="small" color="inherit" />
         </div>
         <div>
-          <h2 className="text-2xl text-primary">Payments</h2>
-          <h3 className="text-gray-500">Multiple Payments Options Available</h3>
+          <h2 className="text-[20px] text-primary ">Quality</h2>
+          <h3 className="text-gray-500">Top Tier Quality. 100% Satifaction </h3>
         </div>
       </div>
-      <div className="flex items-center gap-2 p-2 justify-center">
-        <div className="rounded-full p-3 text-white  bg-primary">
-          <PaidIcon fontSize="large" color="inherit" />
+      <div className="flex items-center gap-4">
+        <div className="rounded-full p-3 text-white  bg-black flex">
+          <PaymentsIcon fontSize="small" color="inherit" />
         </div>
-        <div>
-          <h2 className="text-2xl text-primary">Refund</h2>
-          <h3 className="text-gray-500">100% Money Back Guaranteed</h3>
+        <div className="flex flex-col">
+          <h2 className="text-[20px] text-primary">Payments</h2>
+          <h3 className="text-gray-500">Multiple Payments Options Available</h3>
         </div>
       </div>
     </div>
