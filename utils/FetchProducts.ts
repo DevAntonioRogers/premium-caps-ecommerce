@@ -1,11 +1,8 @@
 import Stripe from "stripe";
-import Product from "./Product";
-import AddToCartButton from "../UI/AddToCartButton";
-import AddtoWishlistButton from "../UI/AddToWishlistButton";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 
-const Products = async () => {
+export const FetchProducts = async () => {
   const session = await getServerSession(authOptions);
   const getProducts = async () => {
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
@@ -32,19 +29,5 @@ const Products = async () => {
 
   const products = await getProducts();
 
-  return (
-    <main>
-      {products.map((product) => (
-        <div>
-          <Product {...product} key={product.id} />
-          <div className="flex gap-6">
-            <AddToCartButton {...product} user={session?.user} />
-            <AddtoWishlistButton {...product} user={session?.user} />
-          </div>
-        </div>
-      ))}
-    </main>
-  );
+  return products
 };
-
-export default Products;

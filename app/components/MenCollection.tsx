@@ -1,11 +1,18 @@
-const MenCollection = () => {
+import { FetchProducts } from "@/utils/FetchProducts";
+import Product from "./Product";
+
+const MenCollection = async () => {
+  const products = await FetchProducts();
+  const menProducts = products.filter((product) => product.metadata.collection === "men");
+
   return (
-    <div className="mt-10 text-center">
-      <h1>Shop Men</h1>
-      <div className="flex justify-center items-center h-96 w-full bg-primary text-2xl">
-        <h1>MEN COLLECTION</h1>
-      </div>
-    </div>
+    <>
+      {menProducts.map((product) => (
+        <div key={product.id}>
+          <Product {...product} />
+        </div>
+      ))}
+    </>
   );
 };
 
