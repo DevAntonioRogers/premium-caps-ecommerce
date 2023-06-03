@@ -27,21 +27,18 @@ const Cart = () => {
         {cartStore.onCheckout === "cart" && (
           <>
             {cartStore.cart.map((product) => (
-              <div>
-                <Image src={product.image} alt={product.name} width={100} height={100} />
-                <h1>{product.name}</h1>
-                <div>
-                  <h2>Quantity: {product.quantity}</h2>
-                  {/* INCREMENT PRODUCT QUANITY */}
-                  <IncrementButton product={product} />
-                  {/* DECREASE PRODUCT AMOUNT */}
+              <div className="flex py-4 gap-4 items-center border-b-grey-600 border-b-2">
+                <Image src={product.image} alt={product.name} width={80} height={80} />
+                <h1 className="font-medium">{product.name}</h1>
+                <div className="flex gap-2 justify-center items-center">
                   <DecrementButton product={product} />
+                  <h2>{product.quantity}</h2>
+                  <IncrementButton product={product} />
                 </div>
-                <RemoveFromCartButton product={product} />
                 <p>{product.unit_amount && formatPrice(product.unit_amount)}</p>
-                <span>Total: {formatPrice(total)}</span>
               </div>
             ))}
+            <span className="mt-10">Total: {formatPrice(total)}</span>
           </>
         )}
         {cartStore.cart.length < 1 && cartStore.onCheckout === "cart" ? (
