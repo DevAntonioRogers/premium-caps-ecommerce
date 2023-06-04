@@ -10,7 +10,7 @@ const WishList = ({ user }: Session) => {
       <div>
         <div
           onClick={(e) => e.stopPropagation()}
-          className="bg-white absolute right-0 top-0 md:w-2/5 w-3/5 h-screen p-12"
+          className="bg-white absolute right-0 top-0 md:w-2/5 w-3/4 h-screen p-12"
         >
           {wishlistStore.onWishList === "wishlist" && (
             <>
@@ -20,8 +20,10 @@ const WishList = ({ user }: Session) => {
                 <div>
                   <Image src={product.image} alt={product.name} width={100} height={100} />
                   <h1>{product.name}</h1>
-                  <AddToCartButton {...product} />
-                  <button onClick={() => wishlistStore.removeFromWishlist({ ...product })}>REMOVE</button>
+                  <div className="flex gap-5">
+                    <AddToCartButton {...product} />
+                    <button onClick={() => wishlistStore.removeFromWishlist({ ...product })}>Remove</button>
+                  </div>
                 </div>
               ))}
             </>
