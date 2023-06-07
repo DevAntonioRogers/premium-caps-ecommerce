@@ -16,11 +16,13 @@ export const PrepOrderAnimation = () => {
 
 export const ConfirmOrderAnimation = () => {
   return (
-    <div className="flex items-center justify-center flex-col mt-24 p-12 ">
+    <div className="flex items-center justify-center flex-col mt-24 p-12 w-full h-[900px]">
       <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}>
         <a href="./Dashboard">View Your Order</a>
       </motion.h1>
-      <Player autoplay loop src={confirm}></Player>
+      <div className="w-full h-full">
+        <Player autoplay loop src={confirm}></Player>
+      </div>
     </div>
   );
 };

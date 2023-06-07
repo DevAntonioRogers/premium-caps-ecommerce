@@ -1,6 +1,6 @@
 import { useCartStore } from "@/store/useCartStore";
 import { ProductType } from "@/Types/ProductTypes";
-import AddCircleIcon from "@mui/icons-material/AddCircle";
+import AddIcon from "@mui/icons-material/Add";
 
 interface IncrementPropType {
   product: ProductType;
@@ -20,7 +20,7 @@ const IncrementButton = ({ product }: IncrementPropType) => {
         })
       }
     >
-      <AddCircleIcon />
+      <AddIcon />
     </button>
   );
 };

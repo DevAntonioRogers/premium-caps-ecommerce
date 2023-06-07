@@ -1,6 +1,6 @@
 import { useCartStore } from "@/store/useCartStore";
 import { ProductType } from "@/Types/ProductTypes";
-import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
+import RemoveIcon from "@mui/icons-material/Remove";
 
 interface DecrementPropType {
   product: ProductType;
@@ -20,7 +20,7 @@ const DecrementButton = ({ product }: DecrementPropType) => {
         })
       }
     >
-      <RemoveCircleIcon />
+      <RemoveIcon />
     </button>
   );
 };

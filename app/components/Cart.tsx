@@ -7,7 +7,6 @@ import IncrementButton from "../UI/IncrementButton";
 import DecrementButton from "../UI/DecrementButton";
 import Checkout from "./Checkout";
 import OrderSuccess from "./OrderSuccess";
-import RemoveFromCartButton from "../UI/RemoveFromCartButton";
 
 const Cart = () => {
   const cartStore = useCartStore();
@@ -26,19 +25,20 @@ const Cart = () => {
         )}
         {cartStore.onCheckout === "cart" && (
           <>
+            <button onClick={() => cartStore.toggleCart()}>Back to store</button>
             {cartStore.cart.map((product) => (
               <div className="flex py-4 gap-4 items-center border-b-grey-600 border-b-2 justify-between">
                 <Image className="w-16 sm:w-20 md:w-24" src={product.image} alt={product.name} width={80} height={80} />
 
                 <h1 className="font-medium">{product.name}</h1>
-                <div className="flex gap-2 justify-center items-center">
+                <div className="flex gap-2 justify-center items-center bg-black/10 px-2 rounded-sm">
                   <DecrementButton product={product} />
                   <h2>{product.quantity}</h2>
                   <IncrementButton product={product} />
                 </div>
               </div>
             ))}
-            <span className="mt-10">Total: {formatPrice(total)}</span>
+            {cartStore.cart.length > 0 ? <span className="mt-10">Total: {formatPrice(total)}</span> : null}
           </>
         )}
 

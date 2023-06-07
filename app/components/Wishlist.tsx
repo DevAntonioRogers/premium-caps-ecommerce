@@ -12,7 +12,8 @@ const WishList = ({ user }: Session) => {
           onClick={(e) => e.stopPropagation()}
           className="bg-white absolute right-0 top-0 md:w-2/5 w-3/4 h-screen p-12"
         >
-          {wishlistStore.onWishList === "wishlist" && (
+          <button onClick={() => wishlistStore.toggleWishList()}>Back to store</button>
+          {wishlistStore.onWishList === "wishlist" && wishlistStore.wishList.length > 0 ? (
             <>
               <h1>Hello {user?.name}</h1>
               <span>You have {wishlistStore.wishList.length} items in your wishlist</span>
@@ -27,6 +28,10 @@ const WishList = ({ user }: Session) => {
                 </div>
               ))}
             </>
+          ) : (
+            <div className="w-full h-full flex justify-center items-center">
+              <h1 className="font-bold italic text-xl">Your Wishlist is empty</h1>
+            </div>
           )}
         </div>
       </div>
