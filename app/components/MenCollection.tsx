@@ -6,13 +6,13 @@ const MenCollection = async () => {
   const menProducts = products.filter((product) => product.metadata.collection === "men");
 
   return (
-    <>
+    <div className="flex justify-between">
       {menProducts.map((product) => (
         <div key={product.id}>
           <Product {...product} />
         </div>
       ))}
-    </>
+    </div>
   );
 };
 
