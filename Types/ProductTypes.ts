@@ -6,4 +6,5 @@ export type ProductType = {
   quantity?: number | 1
   description?: string | null
   user?: string | null
+  features: string
 }

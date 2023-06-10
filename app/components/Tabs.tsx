@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-
 import { useState } from "react";
 
 const Tabs = () => {
@@ -25,8 +24,8 @@ const Tabs = () => {
         </button>
       </div>
       <div className="tab-content">
-        {activeTab === "newArrivals" && <div>d</div>}
-        {activeTab === "bestSellers" && <>deds</>}
+        {activeTab === "newArrivals" && <>FML</>}
+        {activeTab === "bestSellers" && <>FML</>}
         {activeTab === "saleItems" && <div>dscdsc</div>}
       </div>
     </div>
