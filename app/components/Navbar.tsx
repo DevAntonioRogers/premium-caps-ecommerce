@@ -57,8 +57,8 @@ const Navbar = ({ user }: Session) => {
           </div>
         )}
         {user && (
-          <div className="flex items-center gap-6">
-            <div className="text-gray-600 flex items-center gap-6 cursor-pointer">
+          <div className="flex items-center lg:gap-6 gap-3">
+            <div className="text-gray-600 flex items-center lg:gap-6 gap-3 cursor-pointer">
               <div onClick={() => cartStore.toggleCart()} className="relative">
                 <ShoppingBagOutlinedIcon />
                 <AnimatePresence>
