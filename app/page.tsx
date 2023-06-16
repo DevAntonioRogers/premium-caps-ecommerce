@@ -20,7 +20,6 @@ export default function Home() {
       <MenCollection />
       <WomenCollection />
       <Blog />
-      <Products />
     </main>
   );
 }
