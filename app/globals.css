@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .newsletter-bg {
-  background-image: url("../public/newsletter-banner.png");
+  background-image: url("../public/newletter.png");
   background-size: cover;
   height: 310px;
   width: 100%;
