@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.newsletter-bg {
+  background-image: url("../public/newsletter-banner.png");
+  background-size: cover;
+  height: 310px;
+  width: 100%;
+}

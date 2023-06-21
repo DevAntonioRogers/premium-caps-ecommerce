@@ -21,7 +21,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const session = await getServerSession(authOptions);
   return (
     <html lang="en" className={poppins.className}>
-      <body className="lg:max-w-[1200px] xl:mx-auto mx-4">
+      <body>
         <Hydrate>
           <Navbar user={session?.user} />
           {children}

@@ -13,12 +13,12 @@ export default function Home() {
     <main>
       <Hero />
       <Icons />
-      <Tabs />
+      <MenCollection />
 
       <Banner />
 
       <MenCollection />
-      <WomenCollection />
+      <MenCollection />
       <Blog />
     </main>
   );
