@@ -7,13 +7,15 @@ const MenCollection = async () => {
 
   return (
     <div className="w-full my-5">
-      <h1 className="text-center text-2xl font-bold text-primary underline ">Shop Mens</h1>
-      <div className="flex justify-between w-[92%] m-auto">
-        {menProducts.map((product) => (
-          <div key={product.id}>
-            <Product {...product} />
-          </div>
-        ))}
+      <div className="w-[92%] m-auto">
+        <h1 className="text-center text-2xl font-bold text-primary underline ">Shop Mens</h1>
+        <div className="flex justify-between w-[92%] m-auto flex-wrap">
+          {menProducts.map((product) => (
+            <div key={product.id}>
+              <Product {...product} />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
