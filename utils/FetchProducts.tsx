@@ -10,24 +10,40 @@ export const FetchProducts = async () => {
     });
     const products = await stripe.products.list();
 
-    const allProducts = await Promise.all(
-      products.data.map(async (product) => {
-        const prices = await stripe.prices.list({ product: product.id });
-        return {
-          id: product.id,
-          name: product.name,
-          unit_amount: prices.data[0].unit_amount,
-          image: product.images[0],
-          currency: prices.data[0].currency,
-          description: product.description,
-          metadata: product.metadata,
-        };
-      })
-    );
+    const priceMap = new Map();
+
+    const prices = await stripe.prices.list();
+    prices.data.forEach((price) => {
+      if (price.product) {
+        if (!priceMap.has(price.product)) {
+          priceMap.set(price.product, price);
+        } else {
+          const existingPrice = priceMap.get(price.product);
+          if (price.created > existingPrice.created) {
+            priceMap.set(price.product, price);
+          }
+        }
+      }
+    });
+
+    const allProducts = products.data.map((product) => {
+      const price = priceMap.get(product.id);
+
+      return {
+        id: product.id,
+        name: product.name,
+        unit_amount: price ? price.unit_amount : null,
+        image: product.images[0],
+        currency: price ? price.currency : null,
+        description: product.description,
+        metadata: product.metadata,
+      };
+    });
+
     return allProducts;
   };
 
   const products = await getProducts();
 
-  return products
+  return products;
 };

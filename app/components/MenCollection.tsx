@@ -13,7 +13,7 @@ const MenCollection = async () => {
   return (
     <div className="w-full my-10">
       <div className="w-[92%] m-auto lg:max-w-[1500px]">
-        <h1 className="text-center text-2xl font-bold text-primary underline mb-5">Men Collection</h1>
+        <h1 className="text-center text-2xl font-bold mb-5">Men Collection</h1>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-5">
           {menProducts.map((product) => (
             <div

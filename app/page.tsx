@@ -3,6 +3,7 @@ import Blog from "./components/Blog";
 import Hero from "./components/Hero";
 import Icons from "./components/Icons";
 import MenCollection from "./components/MenCollection";
+import WomanCollection from "./components/WomanCollection";
 import Sale from "./components/Sale";
 
 export default function Home() {
@@ -13,7 +14,7 @@ export default function Home() {
       <Sale />
       <Banner />
       <MenCollection />
-      <MenCollection />
+      <WomanCollection />
       <Blog />
     </main>
   );
