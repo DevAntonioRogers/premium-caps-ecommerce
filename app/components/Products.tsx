@@ -37,7 +37,7 @@ const Products = async () => {
     <main>
       {products.map((product) => (
         <div>
-          <Product {...product} key={product.id} />
+          <Product {...product} user={session?.user} key={product.id} />
           <div className="flex gap-6">
             <AddToCartButton {...product} user={session?.user} />
             <AddtoWishlistButton {...product} user={session?.user} />

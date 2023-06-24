@@ -36,7 +36,9 @@ const AddToCartButton = ({ id, image, unit_amount, quantity, name, user }: Produ
   };
   return (
     <>
-      <button onClick={handleAddToCart}>Add to Cart</button>
+      <button className="font-medium" onClick={handleAddToCart}>
+        Add to Cart
+      </button>
       {message && (
         <div
           className={

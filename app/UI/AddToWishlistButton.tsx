@@ -37,7 +37,9 @@ const AddtoWishlistButton = ({ id, image, unit_amount, quantity, name, user }: P
 
   return (
     <>
-      <button onClick={handleWishList}>Add to Wishlist</button>
+      <button className="font-medium" onClick={handleWishList}>
+        Add to Wishlist
+      </button>
       {message && (
         <div
           className={
