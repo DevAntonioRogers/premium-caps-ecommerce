@@ -63,11 +63,9 @@ const Navbar = ({ user }: Session) => {
         </Link>
         {/* DESKTOP MENU */}
         <ul
-          className={
-            scrolling
-              ? "md:flex gap-8  hidden md:visible absolute md:static bg-black top-12 right-5 p-5 z-10 text-white transition-all"
-              : "md:flex gap-8  hidden md:visible absolute md:static bg-white top-12 right-5 p-5 z-10 text-gray-600 transition-all"
-          }
+          className={`md:flex gap-8  hidden md:visible absolute md:static ${
+            scrolling ? "bg-black text-white" : "bg-white text-gray-600"
+          } top-12 right-5 p-5 z-10 transition-all`}
         >
           {menuLinks.map((link) => (
             <li key={link.name}>
@@ -88,7 +86,11 @@ const Navbar = ({ user }: Session) => {
           )}
           {user && (
             <div className="flex items-center lg:gap-6 gap-3">
-              <div className="text-gray-600 flex items-center lg:gap-6 gap-3 cursor-pointer">
+              <div
+                className={`flex items-center lg:gap-6 gap-3 cursor-pointer ${
+                  scrolling ? "text-white" : "text-gray-600"
+                }`}
+              >
                 <div onClick={() => cartStore.toggleCart()} className="relative">
                   <ShoppingBagOutlinedIcon />
                   <AnimatePresence>
@@ -135,7 +137,10 @@ const Navbar = ({ user }: Session) => {
 
         {/* MOBILE MENU ICONS */}
         <div className="flex gap-4 md:hidden">
-          <div className="text-gray-600 relative" onClick={() => cartStore.toggleCart()}>
+          <div
+            className={`relative ${scrolling ? "text-white" : "text-gray-600"}`}
+            onClick={() => cartStore.toggleCart()}
+          >
             <ShoppingBagOutlinedIcon />
             <AnimatePresence>
               {cartStore.cart.length > 0 && (
@@ -155,7 +160,10 @@ const Navbar = ({ user }: Session) => {
               <FavoriteIcon />
             </div>
           )}
-          <div className="md:hidden" onClick={() => setOpenMobileMenu(!openMobileMenu)}>
+          <div
+            className={`md:hidden ${scrolling ? "text-white" : "text-black"}`}
+            onClick={() => setOpenMobileMenu(!openMobileMenu)}
+          >
             {openMobileMenu ? <CloseIcon /> : <MenuIcon />}
           </div>
         </div>
