@@ -11,14 +11,14 @@ const MenCollection = async () => {
   const menProducts = products.filter((product) => product.metadata.collection === "men");
 
   return (
-    <div className="w-full my-5">
+    <div className="w-full my-10">
       <div className="w-[92%] m-auto lg:max-w-[1500px]">
-        <h1 className="text-center text-2xl font-bold text-primary underline mb-5">Shop Mens</h1>
+        <h1 className="text-center text-2xl font-bold text-primary underline mb-5">Men Collection</h1>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-5">
           {menProducts.map((product) => (
             <div
               key={product.id}
-              className="bg-background shadow-lg flex flex-col items-center justify-center rounded-md"
+              className="bg-background shadow-lg flex flex-col items-center justify-center rounded-md hover:-translate-y-2 transition-all"
             >
               <Product {...product} />
               <div className="flex  md:mt-0 mt-2 gap-1 md:gap-3 flex-col md:flex-row">
