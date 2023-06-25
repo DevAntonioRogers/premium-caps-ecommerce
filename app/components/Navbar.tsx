@@ -43,10 +43,10 @@ const Navbar = ({ user }: Session) => {
 
   const menuLinks = [
     { href: "#", name: "Home" },
-    { href: "#", name: "Products" },
-    { href: "#", name: "About" },
-    { href: "#", name: "Contact" },
-    { href: "#", name: "Tracking" },
+    { href: "#men", name: "Men" },
+    { href: "#women", name: "Women" },
+    { href: "#blog", name: "Blog" },
+    { href: "#contact", name: "Contact" },
   ];
 
   return (
@@ -156,7 +156,10 @@ const Navbar = ({ user }: Session) => {
           </div>
 
           {user && (
-            <div onClick={() => wishlistStore.toggleWishList()} className="text-gray-600">
+            <div
+              onClick={() => wishlistStore.toggleWishList()}
+              className={`${scrolling ? "text-white" : "text-gray-600"}`}
+            >
               <FavoriteIcon />
             </div>
           )}
@@ -189,8 +192,7 @@ const Navbar = ({ user }: Session) => {
                     tabIndex={0}
                   />
                   <div className="flex gap-2">
-                    <Link href={"./api/auth/signout"}>Wishlist</Link>
-                    <Link href={"./api/auth/signout"}>Profile</Link>
+                    <Link href={"./Dashboard"}>Profile</Link>
                     <Link href={"./api/auth/signout"}>Sign Out</Link>
                   </div>
                 </div>

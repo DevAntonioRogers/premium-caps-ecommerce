@@ -11,7 +11,7 @@ const WomanCollection = async () => {
   const womenProducts = products.filter((product) => product.metadata.collection === "women");
 
   return (
-    <div className="w-full my-10">
+    <div id="women" className="w-full my-10">
       <div className="w-[92%] m-auto lg:max-w-[1500px]">
         <h1 className="text-center text-2xl font-bold mb-5">Women Collection</h1>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-5">

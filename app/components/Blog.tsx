@@ -6,7 +6,7 @@ import blog3 from "@/public/blog3.jpg";
 
 const Blog = () => {
   return (
-    <div className="w-full">
+    <div id="blog" className="w-full">
       <div className="w-[92%] m-auto py-5 lg:max-w-[1500px]">
         <h1 className="text-2xl text-center font-bold mb-5">From Our Blog</h1>
         <div className="grid gap-4 justify-items-center  grid-cols-1 sm:grid-cols-2 md:grid-cols-3">

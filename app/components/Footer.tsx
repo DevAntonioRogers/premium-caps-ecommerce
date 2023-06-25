@@ -13,7 +13,7 @@ import lock from "@/public/icons/lock.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-black w-full text-white py-5">
+    <footer id="contact" className="bg-black w-full text-white py-5">
       <div className="max-w-screen-xl mx-auto">
         <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <div className="flex flex-col gap-6 justify-center items-center">
