@@ -1,5 +1,6 @@
 import { useCartStore } from "@/store/useCartStore";
 import { totalPrice } from "@/utils/TotalPrice";
+import { useEffect } from "react";
 
 import Image from "next/image";
 import formatPrice from "@/utils/PriceFormat";
@@ -11,6 +12,13 @@ import OrderSuccess from "./OrderSuccess";
 const Cart = () => {
   const cartStore = useCartStore();
   const total = totalPrice(cartStore.cart);
+
+  useEffect(() => {
+    document.body.classList.toggle("overflow-hidden", cartStore.onCheckout !== null);
+    return () => {
+      document.body.classList.remove("overflow-hidden");
+    };
+  }, [cartStore.onCheckout]);
 
   return (
     <div onClick={() => cartStore.toggleCart()} className="fixed w-full h-screen top-0 left-0 bg-black/25 z-50">
