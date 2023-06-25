@@ -7,7 +7,7 @@ import Image from "next/image";
 const Hero = () => {
   return (
     <div className="w-full bg-white">
-      <div className="relative grid md:grid-rows-2 md:grid-cols-4 grid-cols-2 grid-rows-2 gap-2 md:max-h-[500px] h-full w-[92%] m-auto bg-inherit">
+      <div className="relative grid md:grid-rows-2 md:grid-cols-4 grid-cols-2 grid-rows-2 gap-2 md:max-h-[500px] h-full w-[92%] m-auto bg-inherit lg:max-w-[1500px]">
         {/* MIDDLE IMAGE ON DESKTOP */}
         <div className="relative col-start-1 col-end-3 md:row-start-1 md:col-start-2 md:row-end-3 md:col-end-4">
           <Image className="h-full w-full object-cover" src={saleBanner} alt="test" width={0} height={0} />

@@ -5,7 +5,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import AddtoWishlistButton from "../UI/AddToWishlistButton";
 
-const MenCollection = async () => {
+const WomanCollection = async () => {
   const products = await FetchProducts();
   const session = await getServerSession(authOptions);
   const womenProducts = products.filter((product) => product.metadata.collection === "women");
@@ -33,4 +33,4 @@ const MenCollection = async () => {
   );
 };
 
-export default MenCollection;
+export default WomanCollection;

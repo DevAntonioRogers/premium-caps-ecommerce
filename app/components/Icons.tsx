@@ -8,7 +8,7 @@ import LoyaltyIcon from "@mui/icons-material/Loyalty";
 const Icons = () => {
   return (
     <div className="w-full bg-background mt-5">
-      <div className="flex flex-col  md:flex-row  gap-6 md:gap-1 lg:gap-12 w-[92%] m-auto py-4">
+      <div className="flex flex-col  md:flex-row  gap-6 md:gap-1 lg:gap-12 w-[92%] m-auto py-4 lg:max-w-[1500px]">
         <div className="flex items-center gap-4">
           <div className="rounded-full p-3 text-white  bg-black flex">
             <LocalShippingIcon fontSize="small" color="inherit" />
